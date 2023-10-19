@@ -57,8 +57,6 @@ int file_processor(char *file, stack_t **stack)
 
 int end_process(stack_t **stack)
 {
-	int file_closing;
-
 	if (*stack != NULL)
 		free_dlistint(*stack);
 	exit(EXIT_FAILURE);
