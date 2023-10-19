@@ -54,6 +54,7 @@ stack_t *add_dnodeint(stack_t **head, const int n);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
+void deleteFirstElement(stack_t **head);
 int isnumber(char *str);
 int help_full(char *str, stack_t *stack, stack_t *help_stack);
 
