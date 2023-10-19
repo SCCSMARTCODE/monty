@@ -6,20 +6,22 @@
  * Return: sucess
  */
 
+FILE *_file;
+
 int file_processor(char *file, stack_t **stack)
 {
 	int file_closing;
-	FILE *_file = fopen(file, "r");
 	size_t len = 0;
 	char *buf = NULL, *full_instruction;
 	ssize_t f_d;
 	unsigned int line_no = 1;
 	instruct check_instruction;
 
+	_file = fopen(file, "r");
 	if (!_file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
-		end_process(stack);
+			exit(EXIT_FAILURE);
 	}
 	while ((f_d = getline(&buf, &len, _file)) != -1)
 	{
@@ -56,8 +58,15 @@ int file_processor(char *file, stack_t **stack)
 
 int end_process(stack_t **stack)
 {
+	int file_closing;
+
 	if (*stack != NULL)
 		free_dlistint(*stack);
+	file_closing = fclose(_file);
+	if (file_closing == -1)
+	{
+		exit(-1);
+	}
 	exit(EXIT_FAILURE);
 }
 
