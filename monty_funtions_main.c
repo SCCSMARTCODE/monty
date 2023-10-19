@@ -33,7 +33,6 @@ int file_processor(char *file, stack_t **stack)
 		check_instruction = check_i(full_instruction, line_no);
 		if (!check_instruction)
 		{
-			fprintf(stderr, "Error: Can't open file %s\n", full_instruction);
 			fclose(_file);
 			end_process(stack);
 		}
