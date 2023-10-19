@@ -66,5 +66,9 @@ void pint_c(stack_t **head, unsigned int line_no);
 void swap_c(stack_t **stack, unsigned int line_no);
 void add_c(stack_t **stack, unsigned int line_no);
 void nop_c(stack_t **stack, unsigned int line_no);
+void div_c(stack_t **stack, unsigned int line_no);
+void sub_c(stack_t **stack, unsigned int line_no);
+void mod_c(stack_t **stack, unsigned int line_no);
+void mul_c(stack_t **stack, unsigned int line_no);
 
 #endif
