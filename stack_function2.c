@@ -39,3 +39,13 @@ void add_c(stack_t **stack, unsigned int line_no)
 	pop_c(stack, line_no);
 }
 
+/**
+ * nop_c - Removes the top element of the stack.
+ * @stack: A pointer to the top of the stack.
+ * @line_no: The line number in the bytecode file.
+ */
+void nop_c(stack_t **stack, unsigned int line_no)
+{
+	UNUSED(stack);
+	UNUSED(line_no);
+}
