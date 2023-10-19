@@ -58,7 +58,7 @@ int end_process(stack_t **stack)
 {
 	if (*stack != NULL)
 		free_dlistint(*stack);
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -98,11 +98,12 @@ instruct check_i(char *line, unsigned int line_no)
 	{
 		index++;
 	}
-	if (command[index].f != NULL)
-	{
-		return (command[index].f);
-	}
 
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
-	exit(EXIT_FAILURE);
+	if (command[index].f == NULL)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
+		exit(EXIT_FAILURE);
+	}
+	return (command[index].f);
+
 }
