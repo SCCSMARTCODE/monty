@@ -10,7 +10,7 @@ int file_processor(char *file, stack_t **stack)
 {
 	stack_t *help_stack = NULL;
 	FILE *_file;
-	int file_closing, del;
+	int del;
 	size_t len = 0;
 	char *buf = NULL, *full_instruction;
 	ssize_t f_d;
@@ -21,7 +21,7 @@ int file_processor(char *file, stack_t **stack)
 	if (!_file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
-			exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	while ((f_d = getline(&buf, &len, _file)) != -1)
 	{
@@ -34,13 +34,7 @@ int file_processor(char *file, stack_t **stack)
 		check_instruction = check_i(full_instruction, line_no);
 		if (!check_instruction)
 		{
-			free(buf);
-			free_dlistint(*stack);
-			file_closing = fclose(_file);
-		        if (file_closing == -1)
-		        {
-		                exit(-1);
-        		}
+			free_last(buf, *stack, _file);
 			exit(EXIT_FAILURE);
 		}
 		help_stack = *stack;
@@ -48,13 +42,7 @@ int file_processor(char *file, stack_t **stack)
 		del = help_full(full_instruction, *stack, help_stack);
 		line_no++;
 	}
-	free(buf);
-	free_dlistint(*stack);
-	file_closing = fclose(_file);
-	if (file_closing == -1)
-	{
-		exit(-1);
-	}
+	free_last(buf, *stack, _file);
 	if (del == -1)
 	{
 		exit(EXIT_FAILURE);
@@ -62,23 +50,25 @@ int file_processor(char *file, stack_t **stack)
 	return (EXIT_SUCCESS);
 }
 
-int help_full(char *str, stack_t *stack, stack_t *help_stack)
+/**
+ * free_last - the total free man
+ * @buf: first free arg
+ * @stack: 2nd free arg
+ * @_file: 3rd free arg
+ */
+void free_last(char *buf, stack_t *stack, FILE *_file)
 {
-	char *push = "push", *pall = "pall";
-	if (str == push)
+	int file_closing;
+
+	free(buf);
+	free_dlistint(stack);
+	file_closing = fclose(_file);
+	if (file_closing == -1)
 	{
-		if (stack == help_stack)
-			return (-1);
+		exit(-1);
 	}
-	else if(str == pall)
-	{
-		if (stack == NULL)
-		{
-			return (-1);
-		}
-	}
-	return (0);
 }
+
 
 /**
  * end_process - by exiting failure and freeing stack

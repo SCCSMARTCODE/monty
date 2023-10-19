@@ -47,6 +47,7 @@ instruct check_i(char *line, unsigned int line_no);
 char *buf_tok(char *str);
 int end_process(stack_t **stack);
 int file_processor(char *file, stack_t **stack);
+void free_last(char *buf, stack_t *stack, FILE *_file);
 
 /*linked_list fuction*/
 stack_t *add_dnodeint(stack_t **head, const int n);
