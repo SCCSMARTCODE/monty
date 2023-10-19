@@ -16,7 +16,7 @@ int file_processor(char *file, stack_t **stack)
 	unsigned int line_no = 1;
 	instruct check_instruction;
 
-	if (!file)
+	if (!_file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
 		end_process(stack);
