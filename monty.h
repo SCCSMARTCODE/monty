@@ -56,7 +56,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
 void deleteFirstElement(stack_t **head);
 int isnumber(char *str);
-int help_full(char *str, stack_t *stack, stack_t *help_stack);
+int help_full(char *str, stack_t **stack, stack_t *help_stack);
 
 /*stack function*/
 void push_c(stack_t **stack, unsigned int line_no);

@@ -29,40 +29,33 @@ int main(int argc, char *argv[])
  * @help_stack: stack support
  * Return: 0 or -1 as the case mabe
  */
-int help_full(char *str, stack_t *stack, stack_t *help_stack)
+int help_full(char *str, stack_t **stack, stack_t *help_stack)
 {
 	char *push = "push", *pall = "pall", *pint = "pint", *pop = "pop", *mul = "mul";
 	char *add = "add", *swap = "swap", *nop = "nop", *div = "div", *sub = "sub", *mod = "mod";
 
 	if (strcmp(str, push) == 0)
 	{
-		if (stack == help_stack)
+		if (*stack == help_stack)
 			return (-1);
 	}
 	else if (strcmp(str, pall) == 0)
 	{
-		if (stack == NULL)
+		if (*stack == NULL)
 		{
 			return (0);
 		}
 	}
-	else if (strcmp(str, pint) == 0)
+	else if (strcmp(str, pint) == 0 || strcmp(str, pop) == 0)
 	{
-		if (stack == NULL)
-		{
-			return (-1);
-		}
-	}
-	else if (strcmp(str, pop) == 0)
-	{
-		if (stack == NULL)
+		if (*stack == NULL || stack == NULL)
 		{
 			return (-1);
 		}
 	}
 	else if (strcmp(str, add) == 0 || strcmp(str, swap) == 0 || strcmp(str, sub) == 0 || strcmp(str, mul) == 0)
 	{
-		if (stack == NULL || stack->next == NULL)
+		if (*stack == NULL || stack == NULL || (*stack)->next == NULL)
 		{
 			return (-1);
 		}
@@ -73,7 +66,7 @@ int help_full(char *str, stack_t *stack, stack_t *help_stack)
 	}
 	else if (strcmp(str, div) == 0 || strcmp(str, mod) == 0)
 	{
-		if ((stack == NULL || stack->next == NULL) || stack->n == 0)
+		if ((*stack == NULL || stack == NULL || (*stack)->next == NULL) || (*stack)->n == 0)
 		{
 			return (-1);
 		}
