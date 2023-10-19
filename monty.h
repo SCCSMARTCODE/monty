@@ -63,5 +63,7 @@ void push_c(stack_t **stack, unsigned int line_no);
 void pall_c(stack_t **stack, unsigned int line_no);
 void pop_c(stack_t **head, unsigned int line_no);
 void pint_c(stack_t **head, unsigned int line_no);
+void swap_c(stack_t **stack, unsigned int line_no);
+void add_c(stack_t **stack, unsigned int line_no);
 
 #endif

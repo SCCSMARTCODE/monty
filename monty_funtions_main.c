@@ -116,6 +116,8 @@ instruct check_i(char *line, unsigned int line_no)
 		{"pall", pall_c},
 		{"pop", pop_c},
 		{"pint", pint_c},
+		{"add", add_c},
+		{"swap", swap_c},
 		{NULL, NULL}
 	};
 
@@ -124,7 +126,7 @@ instruct check_i(char *line, unsigned int line_no)
 		index++;
 	}
 
-	if (index == 4)
+	if (index == 6)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
 		return (NULL);
