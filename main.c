@@ -33,16 +33,16 @@ int help_full(char *str, stack_t *stack, stack_t *help_stack)
 {
 	char *push = "push", *pall = "pall";
 
-	if (str == push)
+	if (strcmp(str, push) == 0)
 	{
 		if (stack == help_stack)
 			return (-1);
 	}
-	else if (str == pall)
+	else if (strcmp(str, pall) == 0)
 	{
 		if (stack == NULL)
 		{
-			return (-1);
+			return (0);
 		}
 	}
 	return (0);
