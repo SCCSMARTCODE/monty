@@ -8,8 +8,9 @@
 
 int file_processor(char *file, stack_t **stack)
 {
+	stack_t *help_stack = NULL;
 	FILE *_file;
-	int file_closing;
+	int file_closing, del;
 	size_t len = 0;
 	char *buf = NULL, *full_instruction;
 	ssize_t f_d;
@@ -33,21 +34,51 @@ int file_processor(char *file, stack_t **stack)
 		check_instruction = check_i(full_instruction, line_no);
 		if (!check_instruction)
 		{
-			fclose(_file);
-			end_process(stack);
+			free(buf);
+			free_dlistint(*stack);
+			file_closing = fclose(_file);
+		        if (file_closing == -1)
+		        {
+		                exit(-1);
+        		}
+			exit(EXIT_FAILURE);
 		}
+		help_stack = *stack;
 		check_instruction(stack, line_no);
+		del = help_full(full_instruction, *stack, help_stack);
 		line_no++;
 	}
 	free(buf);
+	free_dlistint(*stack);
 	file_closing = fclose(_file);
 	if (file_closing == -1)
 	{
 		exit(-1);
 	}
+	if (del == -1)
+	{
+		exit(EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
 
+int help_full(char *str, stack_t *stack, stack_t *help_stack)
+{
+	char *push = "push", *pall = "pall";
+	if (str == push)
+	{
+		if (stack == help_stack)
+			return (-1);
+	}
+	else if(str == pall)
+	{
+		if (stack == NULL)
+		{
+			return (-1);
+		}
+	}
+	return (0);
+}
 
 /**
  * end_process - by exiting failure and freeing stack
@@ -94,6 +125,7 @@ instruct check_i(char *line, unsigned int line_no)
 		{"push", push_c},
 		{"pall", pall_c},
 		{"pop", pop_c},
+		{"pint", pint_c},
 		{NULL, NULL}
 	};
 
@@ -102,7 +134,7 @@ instruct check_i(char *line, unsigned int line_no)
 		index++;
 	}
 
-	if (index == 3)
+	if (index == 4)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
 		return (NULL);

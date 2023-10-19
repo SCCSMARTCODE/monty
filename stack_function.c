@@ -20,7 +20,6 @@ void push_c(stack_t **stack, unsigned int line_no)
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_no);
-		end_process(stack);
 	}
 }
 
@@ -38,7 +37,7 @@ void pall_c(stack_t **stack, unsigned int line_no)
 
 	if (head == NULL)
 	{
-		end_process(stack);
+		return;
 	}
 
 	while (head != NULL)
@@ -66,6 +65,25 @@ void pop_c(stack_t **head, unsigned int line_no)
 	}
 
 	delete_dnodeint_at_index(head, 0);
+}
+
+/**
+ * pint_c - pop's ooout the first element in stack
+ * @head: stack pointer
+ * @line_no: line of opcode occurance
+ *
+ */
+
+void pint_c(stack_t **head, unsigned int line_no)
+{
+	stack_t *head_h = *head;
+
+	if (head_h == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty", line_no);
+		end_process(head);
+	}
+	printf("%d\n", head_h->n);
 }
 
 /**
