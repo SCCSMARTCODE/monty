@@ -7,12 +7,14 @@
 
 void deleteFirstElement(stack_t **head)
 {
+	stack_t *temp;
+
 	if (*head == NULL)
 	{
 	return;
 	}
 
-	struct stack_s *temp = *head;
+	temp = *head;
 
 	if (temp->next != NULL)
 	{
