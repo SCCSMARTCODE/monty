@@ -48,7 +48,9 @@ int help_full(char *str, stack_t *stack, stack_t *help_stack)
 	else if (strcmp(str, pint) == 0)
 	{
 		if (stack == NULL)
+		{
 			return (-1);
+		}
 	}
 	else if (strcmp(str, pop) == 0)
 	{
