@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
  */
 int help_full(char *str, stack_t *stack, stack_t *help_stack)
 {
-	char *push = "push", *pall = "pall";
+	char *push = "push", *pall = "pall", *pint = "pint", *pop = "pop";
 
 	if (strcmp(str, push) == 0)
 	{
@@ -44,6 +44,16 @@ int help_full(char *str, stack_t *stack, stack_t *help_stack)
 		{
 			return (0);
 		}
+	}
+	else if (strcmp(str, pint) == 0)
+	{
+		if (stack == NULL)
+			return(-1);
+	}
+	else if (strcmp(str, pop) == 0)
+	{
+		if (stack == NULL)
+			return (-1);
 	}
 	return (0);
 }
