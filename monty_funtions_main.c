@@ -6,10 +6,9 @@
  * Return: sucess
  */
 
-FILE *_file;
-
 int file_processor(char *file, stack_t **stack)
 {
+	FILE *_file;
 	int file_closing;
 	size_t len = 0;
 	char *buf = NULL, *full_instruction;
@@ -29,17 +28,19 @@ int file_processor(char *file, stack_t **stack)
 		if (full_instruction == NULL || full_instruction[0] == '#')
 		{
 			line_no++;
-			continue;
-		}
+			continue;	}
 		check_instruction = check_i(full_instruction, line_no);
 		if (!check_instruction)
 		{
 			fprintf(stderr, "Error: Can't open file %s\n", full_instruction);
-			end_process(stack);
-		}
+			fclose(_file);
+			end_process(stack);	}
 		check_instruction(stack, line_no);
-		line_no++;
-	}
+		if (check_instruction == NULL)
+		{
+			fclose(_file);
+			exit(EXIT_SUCCESS);	}
+		line_no++;	}
 	free(buf);
 	file_closing = fclose(_file);
 	if (file_closing == -1)
@@ -62,11 +63,6 @@ int end_process(stack_t **stack)
 
 	if (*stack != NULL)
 		free_dlistint(*stack);
-	file_closing = fclose(_file);
-	if (file_closing == -1)
-	{
-		exit(-1);
-	}
 	exit(EXIT_FAILURE);
 }
 
@@ -113,7 +109,7 @@ instruct check_i(char *line, unsigned int line_no)
 	if (index == 3)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	return (command[index].f);
 

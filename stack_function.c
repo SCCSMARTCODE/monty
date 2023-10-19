@@ -62,7 +62,6 @@ void pop_c(stack_t **head, unsigned int line_no)
 	if (ptr == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_no);
-
 		end_process(head);
 	}
 
