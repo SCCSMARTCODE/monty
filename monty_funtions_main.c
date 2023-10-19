@@ -28,19 +28,18 @@ int file_processor(char *file, stack_t **stack)
 		if (full_instruction == NULL || full_instruction[0] == '#')
 		{
 			line_no++;
-			continue;	}
+			continue;
+		}
 		check_instruction = check_i(full_instruction, line_no);
 		if (!check_instruction)
 		{
 			fprintf(stderr, "Error: Can't open file %s\n", full_instruction);
 			fclose(_file);
-			end_process(stack);	}
+			end_process(stack);
+		}
 		check_instruction(stack, line_no);
-		if (check_instruction == NULL)
-		{
-			fclose(_file);
-			exit(EXIT_SUCCESS);	}
-		line_no++;	}
+		line_no++;
+	}
 	free(buf);
 	file_closing = fclose(_file);
 	if (file_closing == -1)
