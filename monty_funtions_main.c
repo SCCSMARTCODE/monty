@@ -92,6 +92,7 @@ instruct check_i(char *line, unsigned int line_no)
 	instruction_t command[] = {
 		{"push", push_c},
 		{"pall", pall_c},
+		{NULL, NULL}
 	};
 
 	while (command[index].f != NULL && strcmp(command[index].opcode, line) != 0)
@@ -99,7 +100,7 @@ instruct check_i(char *line, unsigned int line_no)
 		index++;
 	}
 
-	if (command[index].f == NULL)
+	if (index == 2)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
 		exit(EXIT_FAILURE);
