@@ -57,5 +57,6 @@ int isnumber(char *str);
 /*stack function*/
 void push_c(stack_t **stack, unsigned int line_no);
 void pall_c(stack_t **stack, unsigned int line_no);
+void pop_c(stack_t **head, unsigned int line_no);
 
 #endif

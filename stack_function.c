@@ -49,6 +49,26 @@ void pall_c(stack_t **stack, unsigned int line_no)
 }
 
 /**
+ * _pop - pop's ooout the first element in stack
+ * @stack: stack pointer
+ * @line_number: line of opcode occurance
+ *
+ */
+
+void pop_c(stack_t **head, unsigned int line_no)
+{
+	stack_t *ptr = *head;
+
+	if (ptr == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_no);
+		end_process(head);
+	}
+
+	delete_dnodeint_at_index(head, 0);
+}
+
+/**
  * isnumber - checks if a string is a number
  * @str: string being passed
  *

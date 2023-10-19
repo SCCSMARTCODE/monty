@@ -92,6 +92,7 @@ instruct check_i(char *line, unsigned int line_no)
 	instruction_t command[] = {
 		{"push", push_c},
 		{"pall", pall_c},
+		{"pop", pop_c},
 		{NULL, NULL}
 	};
 
@@ -100,7 +101,7 @@ instruct check_i(char *line, unsigned int line_no)
 		index++;
 	}
 
-	if (index == 2)
+	if (index == 3)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
 		exit(EXIT_FAILURE);
