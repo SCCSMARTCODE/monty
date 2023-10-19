@@ -49,9 +49,9 @@ void pall_c(stack_t **stack, unsigned int line_no)
 }
 
 /**
- * _pop - pop's ooout the first element in stack
- * @stack: stack pointer
- * @line_number: line of opcode occurance
+ * pop_c - pop's ooout the first element in stack
+ * @head: stack pointer
+ * @line_no: line of opcode occurance
  *
  */
 
