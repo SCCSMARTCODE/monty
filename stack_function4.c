@@ -41,6 +41,7 @@ void stack(stack_t **stack, unsigned int line_no)
 	(void)stack;
 	(void)line_no;
 	data.stack_mode = STACK;
+	(void)data;
 }
 
 /**
@@ -54,5 +55,6 @@ void queue(stack_t **stack, unsigned int line_no)
 	(void)stack;
 	(void)line_no;
 	data.stack_mode = QUEUE;
+	(void)data;
 }
 
