@@ -38,7 +38,7 @@ int file_processor(char *file, stack_t **stack)
 			exit(EXIT_FAILURE);	}
 		help_stack = *stack;
 		check_instruction(stack, line_no);
-		del = help_full(full_instruction, stack, help_stack);
+		del = help_full(full_instruction, *stack, help_stack);
 		if (del == -1)
 		{
 			free_last(buf, *stack, _file);
