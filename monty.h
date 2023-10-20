@@ -58,6 +58,7 @@ void deleteFirstElement(stack_t **head);
 int isnumber(char *str);
 int help_full(char *str, stack_t **stack, stack_t *help_stack);
 
+
 /*stack function*/
 void push_c(stack_t **stack, unsigned int line_no);
 void pall_c(stack_t **stack, unsigned int line_no);
@@ -70,5 +71,11 @@ void div_c(stack_t **stack, unsigned int line_no);
 void sub_c(stack_t **stack, unsigned int line_no);
 void mod_c(stack_t **stack, unsigned int line_no);
 void mul_c(stack_t **stack, unsigned int line_no);
+void queue(stack_t **stack, unsigned int line_no);
+void stack(stack_t **stack, unsigned int line_no);
+void rotr(stack_t **stack, unsigned int line_no);
+void rotl(stack_t **stack, unsigned int line_no);
+void pstr_c(stack_t **stack, unsigned int line_no);
+void pchar_c(stack_t **stack, unsigned int line_no);
 
 #endif

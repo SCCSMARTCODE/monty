@@ -32,12 +32,20 @@ int main(int argc, char *argv[])
 int help_full(char *str, stack_t **stack, stack_t *help_stack)
 {
 	char *push = "push", *pall = "pall", *pint = "pint", *pop = "pop", *mul = "mul";
-	char *add = "add", *swap = "swap", *nop = "nop", *div = "div", *sub = "sub", *mod = "mod";
+	char *add = "add", *swap = "swap", *nop = "nop", *div = "div", *sub = "sub";
+	char *pchar = "pchar", *mod = "mod";
 
 	if (strcmp(str, push) == 0)
 	{
 		if (*stack == help_stack)
 			return (-1);
+	}
+	else if (strcmp(str, pchar))
+	{
+		if (((*stack)->n < 0 || (*stack)->n > 127) || (stack == NULL || *stack == NULL))
+		{
+			return (-1);
+		}
 	}
 	else if (strcmp(str, pall) == 0)
 	{

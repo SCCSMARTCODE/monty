@@ -123,6 +123,12 @@ instruct check_i(char *line, unsigned int line_no)
 		{"div", div_c},
 		{"mod", mod_c},
 		{"mul", mul_c},
+		{"pchar", pchar_c},
+		{"pstr", pstr_c},
+		{"rotl", rotl},
+		{"rotr", rotr},
+		{"stack", stack},
+		{"queue", queue},
 		{NULL, NULL}
 	};
 
