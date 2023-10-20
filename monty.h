@@ -32,6 +32,12 @@ typedef struct instruction_s
 
 } instruction_t;
 
+struct data_s
+{
+        int stack_mode;
+        stack_t *stack;
+};
+
 typedef void (*instruct)(stack_t **stack, unsigned int line_number);
 
 #define UNUSED(x) (void)(x);

@@ -17,7 +17,7 @@ void mul_c(stack_t **stack, unsigned int line_no)
 }
 
 /**
- * mod_c - Computes the remainder of the division of the second top element by the top element of the stack.
+ * mod_c - Computes the remainder of the division of the second top
  * @stack: A pointer to the top of the stack.
  * @line_no: The line number in the bytecode file.
  */
@@ -49,7 +49,7 @@ void pchar_c(stack_t **stack, unsigned int line_no)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_no);
-		exit(EXIT_FAILURE);
+		return;
 	}
 
 	if ((*stack)->n < 0 || (*stack)->n > 127)

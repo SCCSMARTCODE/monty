@@ -137,7 +137,7 @@ instruct check_i(char *line, unsigned int line_no)
 		index++;
 	}
 
-	if (index == 12)
+	if (index == 17)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line);
 		return (NULL);

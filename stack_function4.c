@@ -1,17 +1,8 @@
 #include "monty.h"
 
-struct data_s
-{
-	int stack_mode;
-	stack_t *stack;
-};
-
-struct data_s data;
-
 #define STACK 0
 #define QUEUE 1
 
-struct data_s data;
 /**
  * rotr - Rotates the stack to the bottom.
  * @stack: A pointer to the top of the stack.
@@ -46,6 +37,7 @@ void rotr(stack_t **stack, unsigned int line_no)
  */
 void stack(stack_t **stack, unsigned int line_no)
 {
+	struct data_s data;
 	(void)stack;
 	(void)line_no;
 	data.stack_mode = STACK;
@@ -58,6 +50,7 @@ void stack(stack_t **stack, unsigned int line_no)
  */
 void queue(stack_t **stack, unsigned int line_no)
 {
+	struct data_s data;
 	(void)stack;
 	(void)line_no;
 	data.stack_mode = QUEUE;
